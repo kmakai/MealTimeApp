@@ -1,11 +1,14 @@
 import "./App.css";
 import { NavBar } from "./components/NavBar";
+import SearchBar from "./components/SearchBar";
+import Main from "./pages/Main";
 
 function App() {
   return (
     <>
       <NavBar />
-      <h1 className="text-3xl font-bold underline">Hello app</h1>
+      <SearchBar />
+      <Main />
     </>
   );
 }
