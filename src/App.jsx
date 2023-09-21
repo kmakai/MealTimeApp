@@ -1,14 +1,16 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import { NavBar } from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
-import Main from "./pages/Main";
 
 function App() {
   return (
     <>
       <NavBar />
       <SearchBar />
-      <Main />
+      <main className="p-2">
+        <Outlet />
+      </main>
     </>
   );
 }
