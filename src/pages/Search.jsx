@@ -34,7 +34,7 @@ const Search = () => {
   const { meals } = useLoaderData();
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 p-2">
       {meals && meals.length > 0 ? (
         meals.map((meal, ind) => (
           <Link key={meal.idMeal} to={`/meals/${meal.idMeal}`}>
