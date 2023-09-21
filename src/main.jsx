@@ -12,6 +12,9 @@ import Main from "./pages/Main.jsx";
 import Search from "./pages/Search.jsx";
 import { loader as searchLoader } from "./pages/Search.jsx";
 
+import MealPage from "./pages/MealPage.jsx";
+import { loader as mealLoader } from "./pages/MealPage.jsx";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -20,6 +23,11 @@ const router = createBrowserRouter(
       >
         <Route index element={<Main />} />
         <Route path="search" element={<Search />} loader={searchLoader} />
+        <Route
+          path="meals/:mealId"
+          element={<MealPage />}
+          loader={mealLoader}
+        />
       </Route>
     </Route>
   )
