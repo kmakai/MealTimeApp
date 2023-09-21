@@ -5,7 +5,6 @@ export async function loader({ request }) {
   const url = new URL(request.url);
   const mealId = url.pathname.split("/")[2];
   const meal = await getMealById(mealId);
-  console.log(meal);
   return { meal };
 }
 

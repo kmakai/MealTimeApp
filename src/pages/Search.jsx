@@ -12,7 +12,6 @@ export async function loader({ request }) {
   } else if (q) {
     meals = await getMealsByName(q);
   }
-  console.log(meals);
   return { meals };
 }
 

@@ -12,7 +12,6 @@ const SearchBar = () => {
           const form = document.getElementById("search-form");
           const formData = new FormData(form);
           const searchQuery = formData.get("q");
-          console.log(searchQuery);
           navigate(`/search?q=${searchQuery}`);
         }}
       >

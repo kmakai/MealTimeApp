@@ -25,7 +25,7 @@ const Categories = [
   },
   {
     strCategory: "Miscellaneous",
-    icon: "?",
+    icon: " 🍶",
   },
   {
     strCategory: "Pasta",
