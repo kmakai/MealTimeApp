@@ -1,9 +1,25 @@
+import { Form, useNavigate } from "react-router-dom";
+
 const SearchBar = () => {
+  const navigate = useNavigate();
   return (
     <div className="p-6">
-      <form id="search-form" className="">
+      <Form
+        id="search-form"
+        action="search"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const form = document.getElementById("search-form");
+          const formData = new FormData(form);
+          const searchQuery = formData.get("q");
+          console.log(searchQuery);
+          navigate(`/search?q=${searchQuery}`);
+        }}
+      >
         <input
           type="text"
+          name="q"
+          id="q"
           placeholder="Know what you want? Search for it here!"
           className="border-2 rounded p-2 rounded-r-none sm:w-80"
         />
@@ -13,7 +29,7 @@ const SearchBar = () => {
         >
           Search
         </button>
-      </form>
+      </Form>
     </div>
   );
 };

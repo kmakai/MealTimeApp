@@ -7,10 +7,12 @@ function App() {
   return (
     <>
       <NavBar />
-      <SearchBar />
-      <main className="p-2">
-        <Outlet />
-      </main>
+      <div className="flex flex-col">
+        <SearchBar />
+        <main className="flex items-center pl-4">
+          <Outlet />
+        </main>
+      </div>
     </>
   );
 }

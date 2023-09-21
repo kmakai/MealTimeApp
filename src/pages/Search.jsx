@@ -1,17 +1,24 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { getMealsByCategory } from "../fetchers";
+import { getMealsByName, getMealsByCategory } from "../fetchers";
 
 export async function loader({ request }) {
   const url = new URL(request.url);
   const c = url.searchParams.get("c");
-  const meals = await getMealsByCategory(c);
+  const q = url.searchParams.get("q");
+  let meals = [];
+
+  if (c) {
+    meals = await getMealsByCategory(c);
+  } else if (q) {
+    meals = await getMealsByName(q);
+  }
   console.log(meals);
   return { meals };
 }
 
 const MealCard = ({ meal }) => {
   return (
-    <div className="flex flex-col gap-1 border rounded-md transition ease-in overflow-hidden pb-2 w-40 items-center hover:cursor-pointer hover:scale-110">
+    <div className="flex flex-col gap-1 border rounded-md transition ease-in overflow-hidden pb-2 w-40 items-center hover:cursor-pointer hover:scale-110 h-full text-center">
       <img
         src={meal.strMealThumb}
         alt={meal.strMeal}
@@ -26,17 +33,18 @@ const MealCard = ({ meal }) => {
 
 const Search = () => {
   const { meals } = useLoaderData();
-  // className="grid gap-2 grid-flow-row grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-flow-col md:grid-rows-3 lg:grid-flow-col lg:grid-cols-8 lg:grid-rows-2 w-fit pl-4"
+
   return (
-    <div className="p-4">
-      <div className="flex flex-wrap gap-2">
-        {meals.length &&
-          meals.map((meal, ind) => (
-            <Link key={meal.idMeal} to={`/meals/${meal.idMeal}`}>
-              <MealCard key={ind} meal={meal} />
-            </Link>
-          ))}
-      </div>
+    <div className="flex flex-wrap gap-2">
+      {meals && meals.length > 0 ? (
+        meals.map((meal, ind) => (
+          <Link key={meal.idMeal} to={`/meals/${meal.idMeal}`}>
+            <MealCard key={ind} meal={meal} />
+          </Link>
+        ))
+      ) : (
+        <h1>No results found</h1>
+      )}
     </div>
   );
 };
