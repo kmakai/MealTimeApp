@@ -9,7 +9,7 @@ const Main = () => {
       <p className="text-gray-500">
         Choose a category to see what recipes we have for you!
       </p>
-      <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-9 mt-4">
+      <div className="flex flex-wrap gap-2">
         {Categories.map((c, ind) => (
           <Link
             key={ind}
