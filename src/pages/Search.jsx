@@ -19,7 +19,7 @@ const MealCard = ({ meal }) => {
   return (
     <div className="flex flex-col gap-1 border rounded-md transition ease-in overflow-hidden pb-2 w-40 items-center hover:cursor-pointer hover:scale-110 h-full text-center">
       <img
-        src={meal.strMealThumb}
+        src={meal.strMealThumb + "/preview"}
         alt={meal.strMeal}
         className="w-40 hover:scale-110 transition ease-in"
       />
